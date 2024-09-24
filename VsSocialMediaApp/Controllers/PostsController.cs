@@ -12,9 +12,37 @@ namespace VsSocialMediaApp.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public List<Post> GetRecentPosts(int count)
         {
-            return View();
+            var allPosts = _context.Posts.ToList();
+
+            allPosts.Sort(delegate(Post x, Post y)
+            {
+                return x.Created.CompareTo(y.Created);
+            });
+
+            return allPosts.Take(count).ToList();
+        }
+        public List<Post> GetLikedPosts(int count)
+        {
+            var allPosts = _context.Posts.ToList();
+
+            allPosts.Sort(delegate(Post x, Post y)
+            {
+                return x.Likes.CompareTo(y.Likes);
+            });
+
+            return allPosts.Take(count).ToList();
+        }
+
+        public string? GetUsernameFromId(ulong id)
+        {
+            var account = _context.Accounts.ToList().Find(a => a.Id == id);
+            if (account == null)
+            {
+                return null;
+            }
+            return account.Username;
         }
     }
 }
