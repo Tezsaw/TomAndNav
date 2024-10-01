@@ -35,14 +35,9 @@ namespace VsSocialMediaApp.Controllers
             return allPosts.Take(count).ToList();
         }
 
-        public string? GetUsernameFromId(ulong id)
+        public Account? GetAccountFromId(ulong id)
         {
-            var account = _context.Accounts.ToList().Find(a => a.Id == id);
-            if (account == null)
-            {
-                return null;
-            }
-            return account.Username;
+            return _context.Accounts.ToList().Find(a => a.Id == id);
         }
     }
 }
