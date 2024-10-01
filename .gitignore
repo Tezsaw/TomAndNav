@@ -1,14 +1,14 @@
 # Ignore Visual Studio files
-.vs/
-*.suo
-*.user
+!/VsSocialMediaApp/.vs/
+**/*.suo
+**/*.user
 
 # Ignore build output
-bin/
-obj/
+!/VsSocialMediaApp/bin/
+!/VsSocialMediaApp/obj/
 
 # Ignore NuGet packages
-packages/
+# packages/
 
 # Ignore temporary files
-*.tmp
+**/*.tmp

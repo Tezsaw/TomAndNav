@@ -6,7 +6,7 @@
         public DateTime Created { get; set; }
         public ulong PosterId { get; set; }
         public string? Content { get; set; }
-        public uint Likes { get; set; }
+        public List<Account>? UsersWhoLiked { get; set; }
         public List<Comment>? Comments { get; set; }
     }
 }
